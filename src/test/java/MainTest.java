@@ -8,6 +8,8 @@ class MainTest {
     public void setUpUIComponents() {
         JFrame frame = Main.setUpUI();
         Assertions.assertEquals(3, frame.getDefaultCloseOperation());
-        Assertions.assertEquals(3, frame.getLocation());
+        Assertions.assertTrue(frame.getLocation().getX() > 0);
+        Assertions.assertTrue(frame.getLocation().getY() > 0);
+        Assertions.assertFalse(frame.isResizable());
     }
 }

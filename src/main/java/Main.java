@@ -10,12 +10,13 @@ public class Main {
             var frame = setUpUI();
             frame.setVisible(true);
         });
-
     }
 
     public static JFrame setUpUI() {
         JFrame frame = new PFCalculatorFrame(new PFInputPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         return frame;
     }
 }
