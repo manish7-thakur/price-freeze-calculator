@@ -1,4 +1,4 @@
-package com.agoda;
+package com.agoda.pf.gui;
 
 import javax.swing.*;
 

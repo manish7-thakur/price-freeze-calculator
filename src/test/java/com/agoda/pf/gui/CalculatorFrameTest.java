@@ -1,4 +1,5 @@
-import com.agoda.PFCalculatorFrame;
+package com.agoda.pf.gui;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
