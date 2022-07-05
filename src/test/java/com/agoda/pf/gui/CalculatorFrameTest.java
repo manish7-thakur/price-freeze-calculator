@@ -10,6 +10,6 @@ public class CalculatorFrameTest {
     public void containsPFPanel() {
         JPanel panel = new JPanel();
         JFrame pfFrame = new PFCalculatorFrame(panel);
-        Assertions.assertEquals(pfFrame.getComponents().length, 1);
+        Assertions.assertEquals(1, pfFrame.getComponents().length);
     }
 }
