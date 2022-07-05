@@ -11,5 +11,9 @@ public class PFInputPanel extends JPanel {
         add(new JLabel("Frozen Price"));
         NumberFormatter formatter = new NumberFormatter(NumberFormat.getNumberInstance());
         add(new JFormattedTextField(formatter));
+        add(new JLabel("Deposit Made"));
+        add(new JFormattedTextField(formatter));
+        add(new JLabel("Max Cap"));
+        add(new JFormattedTextField(formatter));
     }
 }

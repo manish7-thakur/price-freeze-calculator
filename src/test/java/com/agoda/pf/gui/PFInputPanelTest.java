@@ -17,5 +17,9 @@ public class PFInputPanelTest {
         JPanel panel = new PFInputPanel();
         Assertions.assertEquals("Frozen Price", ((JLabel) panel.getComponent(0)).getText());
         Assertions.assertEquals("NumberFormatter", ((JFormattedTextField) panel.getComponent(1)).getFormatter().getClass().getSimpleName());
+        Assertions.assertEquals("Deposit Made", ((JLabel) panel.getComponent(2)).getText());
+        Assertions.assertEquals("NumberFormatter", ((JFormattedTextField) panel.getComponent(3)).getFormatter().getClass().getSimpleName());
+        Assertions.assertEquals("Max Cap", ((JLabel) panel.getComponent(4)).getText());
+        Assertions.assertEquals("NumberFormatter", ((JFormattedTextField) panel.getComponent(5)).getFormatter().getClass().getSimpleName());
     }
 }
