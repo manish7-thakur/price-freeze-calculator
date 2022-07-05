@@ -11,4 +11,11 @@ public class PFInputPanelTest {
         JPanel panel = new PFInputPanel();
         Assertions.assertEquals("GridLayout", panel.getLayout().getClass().getSimpleName());
     }
+
+    @Test
+    public void addsRequiredInputComponents() {
+        JPanel panel = new PFInputPanel();
+        Assertions.assertEquals("Frozen Price", ((JLabel) panel.getComponent(0)).getText());
+        Assertions.assertEquals("NumberFormatter", ((JFormattedTextField) panel.getComponent(1)).getFormatter().getClass().getSimpleName());
+    }
 }
