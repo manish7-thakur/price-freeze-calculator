@@ -12,4 +12,11 @@ public class CalculatorFrameTest {
         JFrame pfFrame = new PFCalculatorFrame(panel);
         Assertions.assertEquals(1, pfFrame.getComponents().length);
     }
+    @Test
+    public void setsDefaultWidthAndHeight() {
+        JPanel panel = new JPanel();
+        JFrame pfFrame = new PFCalculatorFrame(panel);
+        Assertions.assertEquals(pfFrame.getWidth(), 300);
+        Assertions.assertEquals(pfFrame.getHeight(), 400);
+    }
 }

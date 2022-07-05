@@ -8,5 +8,6 @@ class MainTest {
     public void setUpUIComponents() {
         JFrame frame = Main.setUpUI();
         Assertions.assertEquals(3, frame.getDefaultCloseOperation());
+        Assertions.assertEquals(3, frame.getLocation());
     }
 }
