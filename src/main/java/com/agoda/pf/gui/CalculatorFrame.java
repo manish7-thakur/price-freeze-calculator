@@ -3,8 +3,9 @@ package com.agoda.pf.gui;
 import javax.swing.*;
 
 public class CalculatorFrame extends JFrame {
-    public CalculatorFrame(JPanel panel) {
-        add(panel);
+    public CalculatorFrame(JPanel inputPanel, JPanel displayPanel) {
+        add(inputPanel);
+        add(displayPanel);
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }
 

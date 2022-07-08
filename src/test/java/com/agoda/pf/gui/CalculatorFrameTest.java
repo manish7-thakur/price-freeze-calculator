@@ -9,18 +9,19 @@ import javax.swing.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CalculatorFrameTest {
-    JPanel panel;
+    JPanel inputPanel;
+    JPanel displayPanel;
     JFrame pfFrame;
 
     @BeforeAll
     public void setUp() {
-        panel = new JPanel();
-        pfFrame = new CalculatorFrame(panel);
+        inputPanel = new JPanel();
+        displayPanel = new JPanel();
+        pfFrame = new CalculatorFrame(inputPanel, displayPanel);
     }
 
     @Test
-    public void containsPFPanel() {
-        JFrame pfFrame = new CalculatorFrame(panel);
+    public void containsPFPanelAndDisplayPanel() {
         Assertions.assertEquals(1, pfFrame.getComponents().length);
     }
 

@@ -1,5 +1,6 @@
 import com.agoda.pf.gui.CalculatorFrame;
 import com.agoda.pf.gui.InputPanel;
+import com.agoda.pf.gui.PriceDisplayPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class Main {
     }
 
     public static JFrame setUpUI() {
-        JFrame frame = new CalculatorFrame(new InputPanel());
+        JFrame frame = new CalculatorFrame(new InputPanel(), new PriceDisplayPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

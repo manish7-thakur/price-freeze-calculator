@@ -8,7 +8,7 @@ import javax.swing.*;
 public class PriceDisplayPanelTest {
     @Test
     public void addsLabelToDisplayPrice() {
-        JPanel panel = new PriceDisplayPanel(new JLabel("0"));
+        JPanel panel = new PriceDisplayPanel();
         Assertions.assertEquals("0", ((JLabel)panel.getComponents()[0]).getText());
     }
 }
