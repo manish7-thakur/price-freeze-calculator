@@ -1,5 +1,5 @@
-import com.agoda.pf.gui.PFCalculatorFrame;
-import com.agoda.pf.gui.PFInputPanel;
+import com.agoda.pf.gui.CalculatorFrame;
+import com.agoda.pf.gui.InputPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ public class Main {
     }
 
     public static JFrame setUpUI() {
-        JFrame frame = new PFCalculatorFrame(new PFInputPanel());
+        JFrame frame = new CalculatorFrame(new InputPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

@@ -5,16 +5,16 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
-public class PFInputPanelTest {
+public class InputPanelTest {
     @Test
     public void usesGridLayout() {
-        JPanel panel = new PFInputPanel();
+        JPanel panel = new InputPanel();
         Assertions.assertEquals("GridLayout", panel.getLayout().getClass().getSimpleName());
     }
 
     @Test
     public void addsRequiredInputComponents() {
-        JPanel panel = new PFInputPanel();
+        JPanel panel = new InputPanel();
         Assertions.assertEquals("Frozen Price", ((JLabel) panel.getComponent(0)).getText());
         Assertions.assertEquals("NumberFormatter", ((JFormattedTextField) panel.getComponent(1)).getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("Deposit Made", ((JLabel) panel.getComponent(2)).getText());

@@ -5,8 +5,8 @@ import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.text.NumberFormat;
 
-public class PFInputPanel extends JPanel {
-    public PFInputPanel() {
+public class InputPanel extends JPanel {
+    public InputPanel() {
         setLayout(new GridLayout(3, 2));
         add(new JLabel("Frozen Price"));
         NumberFormatter formatter = new NumberFormatter(NumberFormat.getNumberInstance());

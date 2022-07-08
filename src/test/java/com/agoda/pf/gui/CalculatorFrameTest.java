@@ -15,12 +15,12 @@ public class CalculatorFrameTest {
     @BeforeAll
     public void setUp() {
         panel = new JPanel();
-        pfFrame = new PFCalculatorFrame(panel);
+        pfFrame = new CalculatorFrame(panel);
     }
 
     @Test
     public void containsPFPanel() {
-        JFrame pfFrame = new PFCalculatorFrame(panel);
+        JFrame pfFrame = new CalculatorFrame(panel);
         Assertions.assertEquals(1, pfFrame.getComponents().length);
     }
 
