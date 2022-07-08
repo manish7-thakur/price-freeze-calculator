@@ -22,7 +22,7 @@ public class CalculatorFrameTest {
 
     @Test
     public void containsPFPanelAndDisplayPanel() {
-        Assertions.assertEquals(1, pfFrame.getComponents().length);
+        Assertions.assertEquals(2, pfFrame.getContentPane().getComponents().length); //components in a frame are added to content pane
     }
 
     @Test
