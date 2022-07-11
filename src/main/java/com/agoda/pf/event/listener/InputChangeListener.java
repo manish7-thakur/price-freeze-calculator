@@ -12,7 +12,7 @@ import javax.swing.text.Document;
 public class InputChangeListener implements DocumentListener {
 
     private final JLabel label;
-    private Double frozenPrice;
+    private double frozenPrice;
     private double currentPrice;
     private double deposit;
 
@@ -52,8 +52,8 @@ public class InputChangeListener implements DocumentListener {
         if (name.equals("frozen-price")) frozenPrice = getPrice(d);
         else if (name.equals("current-price")) currentPrice = getPrice(d);
         else if (name.equals("deposit")) deposit = getPrice(d);
-        PFResult result = PFCalculator.calculate(frozenPrice, 0, 0);
-        label.setText("final price : " + result.getFinalPrice());
+        PFResult result = PFCalculator.calculate(frozenPrice, currentPrice, deposit);
+        label.setText("final price : " + result.getFinalPrice() + ". total savings : " + result.getSavings());
     }
 
     private Double getPrice(Document doc) {
