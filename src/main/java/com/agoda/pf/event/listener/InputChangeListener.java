@@ -4,7 +4,13 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public record InputChangeListener(JLabel label) implements DocumentListener {
+public class InputChangeListener implements DocumentListener {
+
+    private final JLabel label;
+
+    public InputChangeListener(JLabel label) {
+        this.label = label;
+    }
 
     @Override
     public void insertUpdate(DocumentEvent e) {
