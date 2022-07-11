@@ -11,4 +11,9 @@ public class PriceDisplayPanelTest {
         JPanel panel = new PriceDisplayPanel();
         Assertions.assertEquals("0", ((JLabel)panel.getComponents()[0]).getText());
     }
+    @Test
+    public void getAReferenceToDisplayPrice() {
+        PriceDisplayPanel panel = new PriceDisplayPanel();
+        Assertions.assertEquals("0", panel.getDisplayLabel().getText());
+    }
 }
