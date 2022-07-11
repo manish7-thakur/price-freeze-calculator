@@ -14,7 +14,7 @@ public class InputPanel extends JPanel {
     private JFormattedTextField maxCapTextField = createFormattedTextFields("max-cap");
 
     public InputPanel() {
-        setLayout(new GridLayout(3, 2));
+        setLayout(new GridLayout(4, 2));
         add(new JLabel("Frozen Price"));
         add(frozenPriceTextField);
         add(new JLabel("Current Price"));
@@ -51,6 +51,7 @@ public class InputPanel extends JPanel {
     private JFormattedTextField createFormattedTextFields(String propertyName) {
         NumberFormatter formatter = new NumberFormatter(NumberFormat.getNumberInstance());
         JFormattedTextField formattedTextField = new JFormattedTextField(formatter);
+        formattedTextField.setValue(Double.valueOf(0.00));
         formattedTextField.getDocument().putProperty("name", propertyName);
         return formattedTextField;
     }

@@ -60,7 +60,7 @@ public class InputChangeListener implements DocumentListener {
         double txt;
         try {
             txt = Double.parseDouble(doc.getText(0, doc.getLength()));
-        } catch (BadLocationException e) {
+        } catch (BadLocationException | NumberFormatException e) {
             txt = 0;
         }
         return txt;

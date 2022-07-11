@@ -24,29 +24,26 @@ public class InputChangeListenerTest {
         mockLabel = Mockito.mock(JLabel.class);
         documentEvent = Mockito.mock(DocumentEvent.class);
         mockDocument = Mockito.mock(Document.class);
+        Mockito.when(documentEvent.getDocument()).thenReturn(mockDocument);
     }
 
     @Test
     public void updatesPriceParamsInsert() throws BadLocationException {
         listener = new InputChangeListener(mockLabel);
         Mockito.reset(mockLabel);
-        Mockito.when(documentEvent.getDocument()).thenReturn(mockDocument);
-        Mockito.when(mockDocument.getProperty("name")).thenReturn("frozen-price");
-        Mockito.when(mockDocument.getText(Mockito.anyInt(), Mockito.anyInt())).thenReturn("100.21");
+        setUpMocks("frozen-price", "100.21");
         InOrder order = Mockito.inOrder(mockLabel);
 
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(100.21, listener.getFrozenPrice());
         order.verify(mockLabel).setText("final price : 0.0. total savings : 100.21");
 
-        Mockito.when(mockDocument.getProperty("name")).thenReturn("current-price");
-        Mockito.when(mockDocument.getText(Mockito.anyInt(), Mockito.anyInt())).thenReturn("121.34");
+        setUpMocks("current-price", "121.34");
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(121.34, listener.getCurrentPrice());
         order.verify(mockLabel).setText("final price : 100.21. total savings : 21.13000000000001");
 
-        Mockito.when(mockDocument.getProperty("name")).thenReturn("deposit");
-        Mockito.when(mockDocument.getText(Mockito.anyInt(), Mockito.anyInt())).thenReturn("21.35");
+        setUpMocks("deposit", "21.35");
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(21.35, listener.getDeposit());
         order.verify(mockLabel).setText("final price : 78.85999999999999. total savings : 21.13000000000001");
@@ -56,25 +53,34 @@ public class InputChangeListenerTest {
     public void updatesNewPriceOnRemove() throws BadLocationException {
         listener = new InputChangeListener(mockLabel);
         Mockito.reset(mockLabel);
-        Mockito.when(documentEvent.getDocument()).thenReturn(mockDocument);
-        Mockito.when(mockDocument.getProperty("name")).thenReturn("frozen-price");
-        Mockito.when(mockDocument.getText(Mockito.anyInt(), Mockito.anyInt())).thenReturn("100.21");
+        setUpMocks("frozen-price", "100.21");
         InOrder order = Mockito.inOrder(mockLabel);
 
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(100.21, listener.getFrozenPrice());
         order.verify(mockLabel).setText("final price : 0.0. total savings : 100.21");
 
-        Mockito.when(mockDocument.getProperty("name")).thenReturn("current-price");
-        Mockito.when(mockDocument.getText(Mockito.anyInt(), Mockito.anyInt())).thenReturn("121.34");
+        setUpMocks("current-price", "121.34");
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(121.34, listener.getCurrentPrice());
         order.verify(mockLabel).setText("final price : 100.21. total savings : 21.13000000000001");
 
-        Mockito.when(mockDocument.getProperty("name")).thenReturn("deposit");
-        Mockito.when(mockDocument.getText(Mockito.anyInt(), Mockito.anyInt())).thenReturn("21.35");
+        setUpMocks("deposit", "21.35");
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(21.35, listener.getDeposit());
         order.verify(mockLabel).setText("final price : 78.85999999999999. total savings : 21.13000000000001");
+    }
+
+    @Test
+    public void handlesNumberFormatException() throws BadLocationException {
+        listener = new InputChangeListener(mockLabel);
+        setUpMocks("frozen-price", "23.4rew");
+        listener.insertUpdate(documentEvent);
+        Assertions.assertEquals(0, listener.getFrozenPrice());
+    }
+
+    private void setUpMocks(String propertyName, String value) throws BadLocationException {
+        Mockito.when(mockDocument.getProperty("name")).thenReturn(propertyName);
+        Mockito.when(mockDocument.getText(Mockito.anyInt(), Mockito.anyInt())).thenReturn(value);
     }
 }
