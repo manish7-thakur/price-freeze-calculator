@@ -1,7 +1,11 @@
+import com.agoda.pf.event.listener.InputChangeListener;
+import com.agoda.pf.gui.InputPanel;
+import com.agoda.pf.gui.PriceDisplayPanel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.mockito.Mockito;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +13,12 @@ import java.awt.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MainTest {
     JFrame frame;
+    InputPanel inputPanelSpy;
 
     @BeforeAll
     public void setUp() {
-        frame = Main.setUpUI();
+        inputPanelSpy = Mockito.spy(InputPanel.class);
+        frame = Main.setUpUI(inputPanelSpy, new PriceDisplayPanel());
     }
 
     @Test
@@ -27,5 +33,10 @@ class MainTest {
     public void setFrameSizeAppropriateToScreenSize() {
         Assertions.assertEquals(frame.getWidth(), Toolkit.getDefaultToolkit().getScreenSize().width / 4);
         Assertions.assertEquals(frame.getHeight(), Toolkit.getDefaultToolkit().getScreenSize().height / 5);
+    }
+
+    @Test
+    public void wiresUpInputChangeListeners() {
+        Mockito.verify(inputPanelSpy).addInputChangeListeners(Mockito.any(InputChangeListener.class));
     }
 }
