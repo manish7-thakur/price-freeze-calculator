@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 
 public class InputPanelTest {
     @Test
@@ -41,7 +42,29 @@ public class InputPanelTest {
     @Test
     public void allowsAddingListeners() {
         InputPanel panel = new InputPanel();
-        panel.addInputChangeListeners(Mockito.mock(DocumentListener.class));
-        Assertions.assertEquals(1, panel.getInputChangeListenersCount());
+        JFormattedTextField frozenPriceMock = Mockito.mock(JFormattedTextField.class);
+        JFormattedTextField currentPriceMock = Mockito.mock(JFormattedTextField.class);
+        JFormattedTextField depositMock = Mockito.mock(JFormattedTextField.class);
+        JFormattedTextField maxCapMock = Mockito.mock(JFormattedTextField.class);
+        panel.setFrozenPriceTextField(frozenPriceMock);
+        panel.setCurrentPriceTextField(currentPriceMock);
+        panel.setDepositTextField(depositMock);
+        panel.setMaxCapTextField(maxCapMock);
+        Document frozenPriceDocumentMock = Mockito.mock(Document.class);
+        Document currentPriceDocumentMock = Mockito.mock(Document.class);
+        Document depositDocumentMock = Mockito.mock(Document.class);
+        Document maxCapDocumentMock = Mockito.mock(Document.class);
+
+        Mockito.when(frozenPriceMock.getDocument()).thenReturn(frozenPriceDocumentMock);
+        Mockito.when(currentPriceMock.getDocument()).thenReturn(currentPriceDocumentMock);
+        Mockito.when(depositMock.getDocument()).thenReturn(depositDocumentMock);
+        Mockito.when(maxCapMock.getDocument()).thenReturn(maxCapDocumentMock);
+        DocumentListener documentListenerMock = Mockito.mock(DocumentListener.class);
+        panel.addInputChangeListeners(documentListenerMock);
+
+        Mockito.verify(frozenPriceDocumentMock).addDocumentListener(documentListenerMock);
+        Mockito.verify(currentPriceDocumentMock).addDocumentListener(documentListenerMock);
+        Mockito.verify(depositDocumentMock).addDocumentListener(documentListenerMock);
+        Mockito.verify(maxCapDocumentMock).addDocumentListener(documentListenerMock);
     }
 }

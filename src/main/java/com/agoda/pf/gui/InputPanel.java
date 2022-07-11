@@ -6,19 +6,14 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class InputPanel extends JPanel {
-    private List<DocumentListener> listeners;
     private JFormattedTextField frozenPriceTextField = createFormattedTextFields("frozen-price");
     private JFormattedTextField currentPriceTextField = createFormattedTextFields("current-price");
     private JFormattedTextField depositTextField = createFormattedTextFields("deposit");
     private JFormattedTextField maxCapTextField = createFormattedTextFields("max-cap");
 
-
     public InputPanel() {
-        listeners = new ArrayList<>();
         setLayout(new GridLayout(3, 2));
         add(new JLabel("Frozen Price"));
         add(frozenPriceTextField);
@@ -31,11 +26,26 @@ public class InputPanel extends JPanel {
     }
 
     public void addInputChangeListeners(DocumentListener listener) {
-        listeners.add(listener);
+        frozenPriceTextField.getDocument().addDocumentListener(listener);
+        currentPriceTextField.getDocument().addDocumentListener(listener);
+        depositTextField.getDocument().addDocumentListener(listener);
+        maxCapTextField.getDocument().addDocumentListener(listener);
     }
 
-    public int getInputChangeListenersCount() {
-        return listeners.size();
+    public void setFrozenPriceTextField(JFormattedTextField frozenPriceTextField) {
+        this.frozenPriceTextField = frozenPriceTextField;
+    }
+
+    public void setCurrentPriceTextField(JFormattedTextField currentPriceTextField) {
+        this.currentPriceTextField = currentPriceTextField;
+    }
+
+    public void setDepositTextField(JFormattedTextField depositTextField) {
+        this.depositTextField = depositTextField;
+    }
+
+    public void setMaxCapTextField(JFormattedTextField maxCapTextField) {
+        this.maxCapTextField = maxCapTextField;
     }
 
     private JFormattedTextField createFormattedTextFields(String propertyName) {
