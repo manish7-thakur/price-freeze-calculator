@@ -22,12 +22,15 @@ public class InputPanelTest {
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("frozen-price", textField.getDocument().getProperty("name"));
         Assertions.assertEquals("Deposit Made", ((JLabel) panel.getComponent(2)).getText());
+
         textField = (JFormattedTextField) panel.getComponent(3);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("deposit", textField.getDocument().getProperty("name"));
         Assertions.assertEquals("Max Cap", ((JLabel) panel.getComponent(4)).getText());
-        Assertions.assertEquals("NumberFormatter", ((JFormattedTextField) panel.getComponent(5)).getFormatter().getClass().getSimpleName());
-        Assertions.assertEquals("max-cap", ((JFormattedTextField) panel.getComponent(5)).getDocument().getProperty("name"));
+
+        textField = (JFormattedTextField) panel.getComponent(5);
+        Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
+        Assertions.assertEquals("max-cap", textField.getDocument().getProperty("name"));
     }
 
     @Test
