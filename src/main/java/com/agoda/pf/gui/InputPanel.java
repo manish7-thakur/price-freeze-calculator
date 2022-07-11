@@ -16,12 +16,11 @@ public class InputPanel extends JPanel {
         listeners = new ArrayList<>();
         setLayout(new GridLayout(3, 2));
         add(new JLabel("Frozen Price"));
-        NumberFormatter formatter = new NumberFormatter(NumberFormat.getNumberInstance());
-        add(new JFormattedTextField(formatter));
+        add(createFormattedTextFields("frozen-price"));
         add(new JLabel("Deposit Made"));
-        add(new JFormattedTextField(formatter));
+        add(createFormattedTextFields("deposit"));
         add(new JLabel("Max Cap"));
-        add(new JFormattedTextField(formatter));
+        add(createFormattedTextFields("max-cap"));
     }
 
     public void addInputChangeListeners(DocumentListener listener) {
@@ -30,5 +29,12 @@ public class InputPanel extends JPanel {
 
     public int getInputChangeListenersCount() {
         return listeners.size();
+    }
+
+    private JFormattedTextField createFormattedTextFields(String propertyName) {
+        NumberFormatter formatter = new NumberFormatter(NumberFormat.getNumberInstance());
+        JFormattedTextField formattedTextField = new JFormattedTextField(formatter);
+        formattedTextField.getDocument().putProperty("name", propertyName);
+        return formattedTextField;
     }
 }
