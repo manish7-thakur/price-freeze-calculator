@@ -12,5 +12,6 @@ public class PFCalculatorTest {
 
         result = PFCalculator.calculate(90.40, 85.25, 10.12);
         Assertions.assertEquals(75.13, result.getFinalPrice());
+        Assertions.assertEquals(5.150000000000006, result.getSavings());
     }
 }
