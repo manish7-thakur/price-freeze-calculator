@@ -1,4 +1,4 @@
-package com.agoda.pf.event;
+package com.agoda.pf.event.listener;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

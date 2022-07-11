@@ -1,4 +1,4 @@
-package com.agoda.pf.event;
+package com.agoda.pf.event.listener;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
