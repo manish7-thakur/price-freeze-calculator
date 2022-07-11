@@ -21,14 +21,19 @@ public class InputPanelTest {
         JFormattedTextField textField = (JFormattedTextField) panel.getComponent(1);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("frozen-price", textField.getDocument().getProperty("name"));
-        Assertions.assertEquals("Deposit Made", ((JLabel) panel.getComponent(2)).getText());
 
+        Assertions.assertEquals("Current Price", ((JLabel) panel.getComponent(2)).getText());
         textField = (JFormattedTextField) panel.getComponent(3);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
-        Assertions.assertEquals("deposit", textField.getDocument().getProperty("name"));
-        Assertions.assertEquals("Max Cap", ((JLabel) panel.getComponent(4)).getText());
+        Assertions.assertEquals("current-price", textField.getDocument().getProperty("name"));
 
+        Assertions.assertEquals("Deposit Made", ((JLabel) panel.getComponent(4)).getText());
         textField = (JFormattedTextField) panel.getComponent(5);
+        Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
+        Assertions.assertEquals("deposit", textField.getDocument().getProperty("name"));
+
+        Assertions.assertEquals("Max Cap", ((JLabel) panel.getComponent(6)).getText());
+        textField = (JFormattedTextField) panel.getComponent(7);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("max-cap", textField.getDocument().getProperty("name"));
     }

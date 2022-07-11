@@ -11,16 +11,23 @@ import java.util.List;
 
 public class InputPanel extends JPanel {
     private List<DocumentListener> listeners;
+    private JFormattedTextField frozenPriceTextField = createFormattedTextFields("frozen-price");
+    private JFormattedTextField currentPriceTextField = createFormattedTextFields("current-price");
+    private JFormattedTextField depositTextField = createFormattedTextFields("deposit");
+    private JFormattedTextField maxCapTextField = createFormattedTextFields("max-cap");
+
 
     public InputPanel() {
         listeners = new ArrayList<>();
         setLayout(new GridLayout(3, 2));
         add(new JLabel("Frozen Price"));
-        add(createFormattedTextFields("frozen-price"));
+        add(frozenPriceTextField);
+        add(new JLabel("Current Price"));
+        add(currentPriceTextField);
         add(new JLabel("Deposit Made"));
-        add(createFormattedTextFields("deposit"));
+        add(depositTextField);
         add(new JLabel("Max Cap"));
-        add(createFormattedTextFields("max-cap"));
+        add(maxCapTextField);
     }
 
     public void addInputChangeListeners(DocumentListener listener) {
