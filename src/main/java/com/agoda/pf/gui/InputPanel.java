@@ -15,13 +15,22 @@ public class InputPanel extends JPanel {
 
     public InputPanel() {
         setLayout(new GridLayout(4, 2));
-        add(new JLabel("Frozen Price"));
+        JLabel frozenPrice = new JLabel("Frozen Price");
+        Font agodaSansText = new Font("Agoda Sans Text", frozenPrice.getFont().getStyle(), frozenPrice.getFont().getSize());
+        frozenPrice.setFont(agodaSansText);
+        add(frozenPrice);
         add(frozenPriceTextField);
-        add(new JLabel("Current Price"));
+        JLabel currentPrice = new JLabel("Current Price");
+        currentPrice.setFont(agodaSansText);
+        add(currentPrice);
         add(currentPriceTextField);
-        add(new JLabel("Deposit Made"));
+        JLabel depositMade = new JLabel("Deposit Made");
+        depositMade.setFont(agodaSansText);
+        add(depositMade);
         add(depositTextField);
-        add(new JLabel("Max Cap"));
+        JLabel maxCap = new JLabel("Max Cap");
+        maxCap.setFont(agodaSansText);
+        add(maxCap);
         add(maxCapTextField);
     }
 

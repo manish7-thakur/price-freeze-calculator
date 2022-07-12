@@ -21,22 +21,30 @@ public class InputPanelTest {
     @Test
     public void addsRequiredInputComponents() {
         JPanel panel = new InputPanel();
-        Assertions.assertEquals("Frozen Price", ((JLabel) panel.getComponent(0)).getText());
+        JLabel label = (JLabel) panel.getComponent(0);
+        Assertions.assertEquals("Frozen Price", label.getText());
+        Assertions.assertEquals("AgodaSansText-Regular", label.getFont().getFontName());
         JFormattedTextField textField = (JFormattedTextField) panel.getComponent(1);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("frozen-price", textField.getDocument().getProperty("name"));
 
-        Assertions.assertEquals("Current Price", ((JLabel) panel.getComponent(2)).getText());
+        label = (JLabel) panel.getComponent(2);
+        Assertions.assertEquals("Current Price", label.getText());
+        Assertions.assertEquals("AgodaSansText-Regular", label.getFont().getFontName());
         textField = (JFormattedTextField) panel.getComponent(3);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("current-price", textField.getDocument().getProperty("name"));
 
-        Assertions.assertEquals("Deposit Made", ((JLabel) panel.getComponent(4)).getText());
+        label = (JLabel) panel.getComponent(4);
+        Assertions.assertEquals("Deposit Made", label.getText());
+        Assertions.assertEquals("AgodaSansText-Regular", label.getFont().getFontName());
         textField = (JFormattedTextField) panel.getComponent(5);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("deposit", textField.getDocument().getProperty("name"));
 
-        Assertions.assertEquals("Max Cap", ((JLabel) panel.getComponent(6)).getText());
+        label = (JLabel) panel.getComponent(6);
+        Assertions.assertEquals("Max Cap", label.getText());
+        Assertions.assertEquals("AgodaSansText-Regular", label.getFont().getFontName());
         textField = (JFormattedTextField) panel.getComponent(7);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
         Assertions.assertEquals("max-cap", textField.getDocument().getProperty("name"));

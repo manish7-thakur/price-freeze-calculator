@@ -4,12 +4,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.Arrays;
 
 public class PriceDisplayPanelTest {
     @Test
     public void addsLabelToDisplayPriceAtBorderLayoutCenter() {
         JPanel panel = new PriceDisplayPanel();
-        Assertions.assertEquals("0", ((JLabel) panel.getComponents()[0]).getText());
+        JLabel label = (JLabel) panel.getComponents()[0];
+        Assertions.assertEquals("0", label.getText());
+        Assertions.assertEquals("AgodaSansText-Bold", label.getFont().getFontName());
         Assertions.assertEquals("BorderLayout", panel.getLayout().getClass().getSimpleName());
     }
 
