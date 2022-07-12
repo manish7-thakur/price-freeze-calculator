@@ -27,7 +27,7 @@ class MainTest {
         Assertions.assertTrue(frame.getLocation().getX() > 0);
         Assertions.assertTrue(frame.getLocation().getY() > 0);
         Assertions.assertFalse(frame.isResizable());
-        Assertions.assertEquals("Agoda price freeze calculator 1.0", frame.getTitle());
+        Assertions.assertEquals("Agoda price freeze calculator beta 1.0", frame.getTitle());
     }
 
     @Test
