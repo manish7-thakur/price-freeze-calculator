@@ -9,7 +9,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            var frame = setUpUI(new InputPanel(), new PriceDisplayPanel());
+            JFrame frame = setUpUI(new InputPanel(), new PriceDisplayPanel());
             frame.setVisible(true);
         });
     }
