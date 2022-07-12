@@ -9,7 +9,7 @@ public class PriceDisplayPanel extends JPanel {
     public PriceDisplayPanel() {
         setLayout(new BorderLayout());
         displayLabel = new JLabel("0", SwingConstants.CENTER);
-        displayLabel.setFont(new Font("Agoda Sans Text", Font.BOLD, 14));
+        displayLabel.setFont(new Font("Agoda Sans Text", Font.BOLD, displayLabel.getFont().getSize()));
         add(displayLabel);
     }
 

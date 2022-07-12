@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.Arrays;
 
 public class PriceDisplayPanelTest {
     @Test
