@@ -28,7 +28,7 @@ public class InputPanel extends JPanel {
         depositMade.setFont(agodaSansText);
         add(depositMade);
         add(depositTextField);
-        JLabel maxCap = new JLabel("Max Cap");
+        JLabel maxCap = new JLabel("Max Cap (Not yet available)");
         maxCap.setFont(agodaSansText);
         add(maxCap);
         add(maxCapTextField);
