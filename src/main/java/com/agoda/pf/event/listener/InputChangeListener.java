@@ -8,6 +8,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 public class InputChangeListener implements DocumentListener {
 
@@ -66,8 +68,9 @@ public class InputChangeListener implements DocumentListener {
     private Double getPrice(Document doc) {
         double txt;
         try {
-            txt = Double.parseDouble(doc.getText(0, doc.getLength()));
-        } catch (BadLocationException | NumberFormatException e) {
+            String text = doc.getText(0, doc.getLength());
+            txt = NumberFormat.getNumberInstance().parse(text).doubleValue();
+        } catch (BadLocationException | ParseException e) {
             txt = 0;
         }
         return txt;

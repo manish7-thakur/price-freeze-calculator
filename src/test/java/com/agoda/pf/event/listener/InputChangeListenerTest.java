@@ -82,11 +82,19 @@ public class InputChangeListenerTest {
     }
 
     @Test
-    public void handlesNumberFormatException() throws BadLocationException {
+    public void handlesParseException() throws BadLocationException {
         listener = new InputChangeListener(mockLabel);
-        setUpMocks("frozen-price", "23.4rew");
+        setUpMocks("frozen-price", "rw2f3.4rew");
         listener.insertUpdate(documentEvent);
-        Assertions.assertEquals(0, listener.getFrozenPrice());
+        Assertions.assertEquals(0.0, listener.getFrozenPrice());
+    }
+
+    @Test
+    public void parseDoublesWithComma() throws BadLocationException {
+        listener = new InputChangeListener(mockLabel);
+        setUpMocks("frozen-price", "1,234,5");
+        listener.insertUpdate(documentEvent);
+        Assertions.assertEquals(12345, listener.getFrozenPrice());
     }
 
     private void setUpMocks(String propertyName, String value) throws BadLocationException {
