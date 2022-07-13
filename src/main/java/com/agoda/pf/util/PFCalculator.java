@@ -3,14 +3,13 @@ package com.agoda.pf.util;
 public class PFCalculator {
 
     public static PFResult calculate(double frozenPrice, double currentPrice, double deposit, double maxCap) {
-        double newPrice = Math.min(currentPrice, frozenPrice);
-        if(maxCap > 0 && currentPrice - frozenPrice > maxCap) {
-            newPrice = currentPrice - maxCap;
-            currentPrice = currentPrice - maxCap;
-        }
-        double finalPrice = newPrice - deposit;
+        double savings = 0;
+        double finalPrice;
 
-        double savings = Math.abs(currentPrice - frozenPrice);
+        if (currentPrice > frozenPrice) savings = Math.min(currentPrice - frozenPrice, maxCap);
+
+        finalPrice = currentPrice - deposit - savings;
+
         return new PFResult(finalPrice, savings);
     }
 }
