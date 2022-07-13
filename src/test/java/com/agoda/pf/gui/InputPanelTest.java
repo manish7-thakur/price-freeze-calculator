@@ -43,7 +43,7 @@ public class InputPanelTest {
         Assertions.assertEquals("deposit", textField.getDocument().getProperty("name"));
 
         label = (JLabel) panel.getComponent(6);
-        Assertions.assertEquals("Max Cap (Not yet available)", label.getText());
+        Assertions.assertEquals("Max Cap", label.getText());
         Assertions.assertEquals("AgodaSansText-Regular", label.getFont().getFontName());
         textField = (JFormattedTextField) panel.getComponent(7);
         Assertions.assertEquals("NumberFormatter", textField.getFormatter().getClass().getSimpleName());
