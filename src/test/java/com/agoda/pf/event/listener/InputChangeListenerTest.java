@@ -36,22 +36,22 @@ public class InputChangeListenerTest {
 
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(100.21, listener.getFrozenPrice());
-        order.verify(mockLabel).setText("final price : 0.0     total savings : 100.21");
+        order.verify(mockLabel).setText("final price : 0.0     total savings : 0.0");
 
         setUpMocks("current-price", "121.34");
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(121.34, listener.getCurrentPrice());
-        order.verify(mockLabel).setText("final price : 100.21     total savings : 21.13000000000001");
+        order.verify(mockLabel).setText("final price : 121.34     total savings : 0.0");
 
         setUpMocks("deposit", "21.35");
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(21.35, listener.getDeposit());
-        order.verify(mockLabel).setText("final price : 78.85999999999999     total savings : 21.13000000000001");
+        order.verify(mockLabel).setText("final price : 99.99000000000001     total savings : 0.0");
 
         setUpMocks("max-cap", "15.35");
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(15.35, listener.getMaxCap());
-        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 5.780000000000015");
+        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 15.35");
     }
 
     @Test
@@ -63,22 +63,22 @@ public class InputChangeListenerTest {
 
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(100.21, listener.getFrozenPrice());
-        order.verify(mockLabel).setText("final price : 0.0     total savings : 100.21");
+        order.verify(mockLabel).setText("final price : 0.0     total savings : 0.0");
 
         setUpMocks("current-price", "121.34");
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(121.34, listener.getCurrentPrice());
-        order.verify(mockLabel).setText("final price : 100.21     total savings : 21.13000000000001");
+        order.verify(mockLabel).setText("final price : 121.34     total savings : 0.0");
 
         setUpMocks("deposit", "21.35");
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(21.35, listener.getDeposit());
-        order.verify(mockLabel).setText("final price : 78.85999999999999     total savings : 21.13000000000001");
+        order.verify(mockLabel).setText("final price : 99.99000000000001     total savings : 0.0");
 
         setUpMocks("max-cap", "15.35");
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(15.35, listener.getMaxCap());
-        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 5.780000000000015");
+        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 15.35");
     }
 
     @Test
