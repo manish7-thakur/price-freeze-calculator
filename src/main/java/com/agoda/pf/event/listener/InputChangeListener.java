@@ -61,7 +61,8 @@ public class InputChangeListener implements DocumentListener {
         else if (name.equals("deposit")) deposit = getPrice(d);
         else if (name.equals("max-cap")) maxCap = getPrice(d);
         PFResult result = PFCalculator.calculate(frozenPrice, currentPrice, deposit, maxCap);
-        String text = "final price : " + result.getFinalPrice() + "     total savings : " + result.getSavings();
+        NumberFormat formatter = NumberFormat.getNumberInstance();
+        String text = "final price : " + formatter.format(result.getFinalPrice()) + "     total savings : " + formatter.format(result.getSavings());
         label.setText(text);
     }
 

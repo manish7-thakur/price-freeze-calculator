@@ -31,54 +31,54 @@ public class InputChangeListenerTest {
     public void updatesPriceParamsInsert() throws BadLocationException {
         listener = new InputChangeListener(mockLabel);
         Mockito.reset(mockLabel);
-        setUpMocks("frozen-price", "100.21");
+        setUpMocks("frozen-price", "10000.21");
         InOrder order = Mockito.inOrder(mockLabel);
 
         listener.insertUpdate(documentEvent);
-        Assertions.assertEquals(100.21, listener.getFrozenPrice());
-        order.verify(mockLabel).setText("final price : 0.0     total savings : 0.0");
+        Assertions.assertEquals(10000.21, listener.getFrozenPrice());
+        order.verify(mockLabel).setText("final price : 0     total savings : 0");
 
-        setUpMocks("current-price", "121.34");
+        setUpMocks("current-price", "10821.34");
         listener.insertUpdate(documentEvent);
-        Assertions.assertEquals(121.34, listener.getCurrentPrice());
-        order.verify(mockLabel).setText("final price : 121.34     total savings : 0.0");
+        Assertions.assertEquals(10821.34, listener.getCurrentPrice());
+        order.verify(mockLabel).setText("final price : 10,821.34     total savings : 0");
 
-        setUpMocks("deposit", "21.35");
+        setUpMocks("deposit", "212.35");
         listener.insertUpdate(documentEvent);
-        Assertions.assertEquals(21.35, listener.getDeposit());
-        order.verify(mockLabel).setText("final price : 99.99000000000001     total savings : 0.0");
+        Assertions.assertEquals(212.35, listener.getDeposit());
+        order.verify(mockLabel).setText("final price : 10,608.99     total savings : 0");
 
-        setUpMocks("max-cap", "15.35");
+        setUpMocks("max-cap", "135.35");
         listener.insertUpdate(documentEvent);
-        Assertions.assertEquals(15.35, listener.getMaxCap());
-        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 15.35");
+        Assertions.assertEquals(135.35, listener.getMaxCap());
+        order.verify(mockLabel).setText("final price : 10,473.64     total savings : 135.35");
     }
 
     @Test
     public void updatesNewPriceOnRemove() throws BadLocationException {
         listener = new InputChangeListener(mockLabel);
         Mockito.reset(mockLabel);
-        setUpMocks("frozen-price", "100.21");
+        setUpMocks("frozen-price", "10320.21");
         InOrder order = Mockito.inOrder(mockLabel);
 
         listener.removeUpdate(documentEvent);
-        Assertions.assertEquals(100.21, listener.getFrozenPrice());
-        order.verify(mockLabel).setText("final price : 0.0     total savings : 0.0");
+        Assertions.assertEquals(10320.21, listener.getFrozenPrice());
+        order.verify(mockLabel).setText("final price : 0     total savings : 0");
 
-        setUpMocks("current-price", "121.34");
+        setUpMocks("current-price", "13421.34");
         listener.removeUpdate(documentEvent);
-        Assertions.assertEquals(121.34, listener.getCurrentPrice());
-        order.verify(mockLabel).setText("final price : 121.34     total savings : 0.0");
+        Assertions.assertEquals(13421.34, listener.getCurrentPrice());
+        order.verify(mockLabel).setText("final price : 13,421.34     total savings : 0");
 
-        setUpMocks("deposit", "21.35");
+        setUpMocks("deposit", "241.35");
         listener.removeUpdate(documentEvent);
-        Assertions.assertEquals(21.35, listener.getDeposit());
-        order.verify(mockLabel).setText("final price : 99.99000000000001     total savings : 0.0");
+        Assertions.assertEquals(241.35, listener.getDeposit());
+        order.verify(mockLabel).setText("final price : 13,179.99     total savings : 0");
 
-        setUpMocks("max-cap", "15.35");
+        setUpMocks("max-cap", "175.35");
         listener.removeUpdate(documentEvent);
-        Assertions.assertEquals(15.35, listener.getMaxCap());
-        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 15.35");
+        Assertions.assertEquals(175.35, listener.getMaxCap());
+        order.verify(mockLabel).setText("final price : 13,004.64     total savings : 175.35");
     }
 
     @Test
