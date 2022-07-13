@@ -52,7 +52,7 @@ public class InputChangeListener implements DocumentListener {
         if (name.equals("frozen-price")) frozenPrice = getPrice(d);
         else if (name.equals("current-price")) currentPrice = getPrice(d);
         else if (name.equals("deposit")) deposit = getPrice(d);
-        PFResult result = PFCalculator.calculate(frozenPrice, currentPrice, deposit);
+        PFResult result = PFCalculator.calculate(frozenPrice, currentPrice, deposit, 0);
         label.setText("final price : " + result.getFinalPrice() + "     total savings : " + result.getSavings());
     }
 
