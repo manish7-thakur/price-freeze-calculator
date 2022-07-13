@@ -15,6 +15,7 @@ public class InputChangeListener implements DocumentListener {
     private double frozenPrice;
     private double currentPrice;
     private double deposit;
+    private double maxCap;
 
     public InputChangeListener(JLabel label) {
         this.label = label;
@@ -52,8 +53,10 @@ public class InputChangeListener implements DocumentListener {
         if (name.equals("frozen-price")) frozenPrice = getPrice(d);
         else if (name.equals("current-price")) currentPrice = getPrice(d);
         else if (name.equals("deposit")) deposit = getPrice(d);
-        PFResult result = PFCalculator.calculate(frozenPrice, currentPrice, deposit, 0);
-        label.setText("final price : " + result.getFinalPrice() + "     total savings : " + result.getSavings());
+        else if (name.equals("max-cap")) maxCap = getPrice(d);
+        PFResult result = PFCalculator.calculate(frozenPrice, currentPrice, deposit, maxCap);
+        String text = "final price : " + result.getFinalPrice() + "     total savings : " + result.getSavings();
+        label.setText(text);
     }
 
     private Double getPrice(Document doc) {

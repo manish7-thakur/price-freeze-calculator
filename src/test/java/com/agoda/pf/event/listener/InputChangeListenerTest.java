@@ -47,6 +47,11 @@ public class InputChangeListenerTest {
         listener.insertUpdate(documentEvent);
         Assertions.assertEquals(21.35, listener.getDeposit());
         order.verify(mockLabel).setText("final price : 78.85999999999999     total savings : 21.13000000000001");
+
+        setUpMocks("max-cap", "15.35");
+        listener.insertUpdate(documentEvent);
+        Assertions.assertEquals(21.35, listener.getDeposit());
+        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 5.780000000000015");
     }
 
     @Test
@@ -69,6 +74,11 @@ public class InputChangeListenerTest {
         listener.removeUpdate(documentEvent);
         Assertions.assertEquals(21.35, listener.getDeposit());
         order.verify(mockLabel).setText("final price : 78.85999999999999     total savings : 21.13000000000001");
+
+        setUpMocks("max-cap", "15.35");
+        listener.removeUpdate(documentEvent);
+        Assertions.assertEquals(21.35, listener.getDeposit());
+        order.verify(mockLabel).setText("final price : 84.64000000000001     total savings : 5.780000000000015");
     }
 
     @Test
