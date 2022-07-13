@@ -48,6 +48,10 @@ public class InputChangeListener implements DocumentListener {
         return deposit;
     }
 
+    public double getMaxCap() {
+        return maxCap;
+    }
+
     private void updatePrice(Document d) {
         String name = (String) d.getProperty("name");
         if (name.equals("frozen-price")) frozenPrice = getPrice(d);
